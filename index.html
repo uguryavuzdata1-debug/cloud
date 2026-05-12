@@ -272,6 +272,8 @@
   .ft-xls { background: linear-gradient(135deg, #d1fae5, #6ee7b7); }
   .ft-ppt { background: linear-gradient(135deg, #ffedd5, #fdba74); }
   .ft-zip { background: linear-gradient(135deg, #fae8ff, #f0abfc); }
+  .ft-form { background: linear-gradient(135deg, #f3e8ff, #d8b4fe); }
+  .ft-script { background: linear-gradient(135deg, #e0e7ff, #a5b4fc); }
   .ft-other { background: linear-gradient(135deg, #f3f4f6, #d1d5db); }
 
   /* CONTEXT MENU */
@@ -602,6 +604,7 @@ async function listDriveFiles() {
 }
 
 function mapMimeType(mime) {
+  if (!mime) return 'other';
   if (mime === 'application/vnd.google-apps.folder') return 'folder';
   if (mime.includes('pdf')) return 'pdf';
   if (mime.includes('spreadsheet') || mime.includes('excel')) return 'xls';
@@ -609,20 +612,23 @@ function mapMimeType(mime) {
   if (mime.includes('document') || mime.includes('word')) return 'doc';
   if (mime.includes('image')) return 'img';
   if (mime.includes('video')) return 'vid';
-  if (mime.includes('zip') || mime.includes('rar')) return 'zip';
+  if (mime.includes('zip') || mime.includes('rar') || mime.includes('tar')) return 'zip';
+  if (mime.includes('form')) return 'form';
+  if (mime.includes('script')) return 'script';
   return 'other';
 }
 
 function getThumbClass(type) {
-  const map = { folder:'ft-folder', pdf:'ft-pdf', doc:'ft-doc', xls:'ft-xls', ppt:'ft-ppt', img:'ft-img', vid:'ft-vid', zip:'ft-zip' };
+  const map = { folder:'ft-folder', pdf:'ft-pdf', doc:'ft-doc', xls:'ft-xls', ppt:'ft-ppt', img:'ft-img', vid:'ft-vid', zip:'ft-zip', form:'ft-form', script:'ft-script' };
   return map[type] || 'ft-other';
 }
 
 function formatSize(bytes) {
   if (!bytes) return '—';
   const s = parseInt(bytes);
-  if (s > 1048576) return (s/1048576).toFixed(1)+' MB';
-  return Math.round(s/1024)+' KB';
+  if (s >= 1073741824) return (s / 1073741824).toFixed(1) + ' GB';
+  if (s >= 1048576) return (s / 1048576).toFixed(1) + ' MB';
+  return Math.round(s / 1024) + ' KB';
 }
 
 function formatDate(iso) {
@@ -700,7 +706,7 @@ function handleLogin() {
     
     // Get user info from Drive
     try {
-      const about = await gapi.client.drive.about.get({ fields: 'user' });
+      const about = await gapi.client.drive.about.get({ fields: 'user, storageQuota' });
       const user = about.result.user;
       
       if (user.emailAddress !== ALLOWED_EMAIL) {
@@ -708,6 +714,20 @@ function handleLogin() {
         document.getElementById('owner-notice').classList.add('show');
         handleLogout();
         return;
+      }
+      
+      const quota = about.result.storageQuota;
+      if (quota) {
+        const used = parseInt(quota.usage || 0);
+        const limit = parseInt(quota.limit || 0);
+        if (limit > 0) {
+          document.getElementById('storage-numbers').textContent = `${formatSize(used)} / ${formatSize(limit)}`;
+          const pct = Math.min(100, Math.max(0, (used / limit) * 100));
+          document.getElementById('storage-fill').style.width = pct + '%';
+        } else {
+          document.getElementById('storage-numbers').textContent = `${formatSize(used)} used`;
+          document.getElementById('storage-fill').style.width = '100%';
+        }
       }
       
       // Session saving disabled to force authenticator every time
@@ -732,7 +752,7 @@ function renderFiles(filter = '') {
   const folders = files.filter(f => f.type === 'folder');
   const docs    = files.filter(f => f.type !== 'folder');
 
-  const emojis = { folder:'📁', pdf:'📕', ppt:'📋', xls:'📊', doc:'📝', img:'🖼', vid:'🎬', zip:'🗜', other:'📄' };
+  const emojis = { folder:'📁', pdf:'📕', ppt:'📋', xls:'📊', doc:'📝', img:'🖼', vid:'🎬', zip:'🗜', form:'📋', script:'📜', other:'📄' };
 
   let html = '';
   if (folders.length) {
