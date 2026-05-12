@@ -555,20 +555,7 @@ function gisLoaded() {
 }
 
 function checkBeforeStart() {
-  if (gapiInited && gsisInited) {
-    const s = localStorage.getItem(SESSION_KEY);
-    if (s) {
-      try {
-        const { user, token, ts } = JSON.parse(s);
-        const age = (Date.now() - ts) / 3600000;
-        if (age < 12 && isWorkHour()) {
-          accessToken = token;
-          gapi.client.setToken({ access_token: token });
-          startSession(user);
-        }
-      } catch(e) {}
-    }
-  }
+  // Auto-login disabled to force authentication every time
 }
 
 // ─── DRIVE OPERATIONS ────────────────────────────────────
@@ -713,11 +700,7 @@ function handleLogin() {
         return;
       }
       
-      localStorage.setItem(SESSION_KEY, JSON.stringify({ 
-        user: { email: user.emailAddress, name: user.displayName }, 
-        token: accessToken,
-        ts: Date.now() 
-      }));
+      // Session saving disabled to force authenticator every time
       
       startSession({ email: user.emailAddress, name: user.displayName });
     } catch (err) {
@@ -725,11 +708,7 @@ function handleLogin() {
     }
   };
 
-  if (gapi.client.getToken() === null) {
-    tokenClient.requestAccessToken({ prompt: 'consent' });
-  } else {
-    tokenClient.requestAccessToken({ prompt: '' });
-  }
+  tokenClient.requestAccessToken({ prompt: 'consent select_account' });
 }
 
 // ─── FILE RENDERING ───────────────────────────────────────
