@@ -302,15 +302,15 @@
       </svg>
     </div>
     <div class="login-title">Personal Cloud Desktop</div>
-    <div class="login-sub">Kişisel çalışma alanınıza güvenli erişim.<br>Tüm verileriniz Google Drive'da şifreli.</div>
+    <div class="login-sub">Secure access to your personal workspace.<br>All your data is encrypted on Google Drive.</div>
     <div class="login-badges">
       <div class="login-badge">
         <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><rect x="1.5" y="4.5" width="7" height="5" rx="1.2" stroke="#34d399" stroke-width="1"/><path d="M3 4.5V3C3 1.9 3.9 1 5 1S7 1.9 7 3V4.5" stroke="#34d399" stroke-width="1" stroke-linecap="round"/></svg>
-        E2E Şifreli
+        E2E Encrypted
       </div>
       <div class="login-badge">
         <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><circle cx="5" cy="5" r="3.5" stroke="#34d399" stroke-width="1"/><path d="M3.5 5L4.5 6L6.5 4" stroke="#34d399" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        Sadece Siz
+        Only You
       </div>
     </div>
 
@@ -321,16 +321,16 @@
         <path d="M3.964 10.71c-.18-.54-.282-1.117-.282-1.71s.102-1.17.282-1.71V4.958H.957C.347 6.173 0 7.548 0 9s.348 2.827.957 4.042l3.007-2.332z" fill="#FBBC05"/>
         <path d="M9 3.58c1.321 0 2.508.454 3.44 1.345l2.582-2.58C13.463.891 11.426 0 9 0 5.482 0 2.438 2.017.957 4.958L3.964 6.29C4.672 4.163 6.656 3.58 9 3.58z" fill="#EA4335"/>
       </svg>
-      Google ile Giriş Yap
+      Sign in with Google
     </button>
 
     <div class="time-notice">
       <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="4.5" stroke="currentColor" stroke-width="1"/><path d="M6 3.5V6.5L7.5 8" stroke="currentColor" stroke-width="1" stroke-linecap="round"/></svg>
-      Oturum <span>08:00 – 18:00</span> saatleri arasında aktif
+      Session active between <span>09:15 – 17:45</span>
     </div>
 
     <div class="owner-notice" id="owner-notice">
-      ⚠️ Bu uygulama sadece <strong id="allowed-email-display"></strong> hesabıyla kullanılabilir.
+      ⚠️ This application can only be used with the <strong id="allowed-email-display"></strong> account.
     </div>
   </div>
 </div>
@@ -351,20 +351,20 @@
     </div>
     <div class="tb-search">
       <svg width="14" height="14" viewBox="0 0 14 14" fill="none" opacity="0.4"><circle cx="6" cy="6" r="4.5" stroke="var(--text1)" stroke-width="1.2"/><line x1="9.5" y1="9.5" x2="12.5" y2="12.5" stroke="var(--text1)" stroke-width="1.2" stroke-linecap="round"/></svg>
-      <input type="text" placeholder="Dosya veya klasör ara..." id="search-input" oninput="filterFiles(this.value)">
+      <input type="text" placeholder="Search files or folders..." id="search-input" oninput="filterFiles(this.value)">
     </div>
     <div class="tb-right">
       <div class="drive-status">
         <div class="drive-dot"></div>
-        <span id="drive-status-text">Drive Bağlı</span>
+        <span id="drive-status-text">Drive Connected</span>
       </div>
       <div class="vault-badge">
         <svg width="11" height="11" viewBox="0 0 11 11" fill="none"><rect x="1.5" y="5" width="8" height="5.5" rx="1.5" fill="#34d399" fill-opacity="0.3" stroke="#34d399" stroke-width="1"/><path d="M3 5V3.5C3 2.1 4.1 1 5.5 1S8 2.1 8 3.5V5" stroke="#34d399" stroke-width="1.1" stroke-linecap="round"/></svg>
-        Şifreli Bağlantı
+        Encrypted Connection
       </div>
-      <div class="session-timer" id="session-timer">18:00'e kadar</div>
-      <div class="user-avatar" id="user-avatar" title="Hesap bilgisi" style="color:white;">KA</div>
-      <button class="logout-btn" onclick="handleLogout()">Çıkış</button>
+      <div class="session-timer" id="session-timer">Until 17:45</div>
+      <div class="user-avatar" id="user-avatar" title="Account info" style="color:white;">KA</div>
+      <button class="logout-btn" onclick="handleLogout()">Logout</button>
     </div>
   </div>
 
@@ -378,31 +378,31 @@
       </div>
       <div class="nav-item" onclick="setView('my-drive')">
         <svg width="15" height="15" viewBox="0 0 15 15" fill="none"><path d="M2 5C2 4 2.9 3 4 3H7L8.5 4.5H12C13.1 4.5 14 5.4 14 6.5V11C14 12.1 13.1 13 12 13H4C2.9 13 2 12.1 2 11V5Z" stroke="currentColor" stroke-width="1.1" fill="none"/></svg>
-        <span>Drive'ım</span>
+        <span>My Drive</span>
       </div>
       <div class="nav-item" onclick="setView('recent')">
         <svg width="15" height="15" viewBox="0 0 15 15" fill="none"><circle cx="7.5" cy="7.5" r="5.5" stroke="currentColor" stroke-width="1.1" fill="none"/><path d="M7.5 4.5V7.5L9.5 9" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" fill="none"/></svg>
-        <span>Son Açılanlar</span>
+        <span>Recent</span>
         <span class="nav-badge" id="recent-badge">0</span>
       </div>
       <div class="nav-item" onclick="setView('starred')">
         <svg width="15" height="15" viewBox="0 0 15 15" fill="none"><path d="M7.5 2L9 5.5H13L10 7.5L11.5 12L7.5 9.5L3.5 12L5 7.5L2 5.5H6Z" stroke="currentColor" stroke-width="1.1" fill="none"/></svg>
-        <span>Yıldızlılar</span>
+        <span>Starred</span>
       </div>
 
-      <div class="nav-section">Depolama</div>
+      <div class="nav-section">Storage</div>
       <div class="nav-item" onclick="setView('shared')">
         <svg width="15" height="15" viewBox="0 0 15 15" fill="none"><circle cx="5.5" cy="5.5" r="2.5" stroke="currentColor" stroke-width="1.1" fill="none"/><path d="M1.5 13C1.5 10.5 3.3 9 5.5 9S9.5 10.5 9.5 13" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" fill="none"/><circle cx="11" cy="5.5" r="2" stroke="currentColor" stroke-width="1" fill="none" opacity="0.5"/></svg>
-        <span>Paylaşılanlar</span>
+        <span>Shared</span>
       </div>
       <div class="nav-item" onclick="setView('trash')">
         <svg width="15" height="15" viewBox="0 0 15 15" fill="none"><path d="M3 4H12M5 4V3C5 2.4 5.4 2 6 2H9C9.6 2 10 2.4 10 3V4M6 7V11M9 7V11" stroke="currentColor" stroke-width="1.1" stroke-linecap="round"/><path d="M3.5 4L4.5 12.5C4.5 13.1 4.9 13.5 5.5 13.5H9.5C10.1 13.5 10.5 13.1 10.5 12.5L11.5 4" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" fill="none"/></svg>
-        <span>Çöp Kutusu</span>
+        <span>Trash</span>
       </div>
 
       <div class="sidebar-footer">
         <div class="storage-info">
-          <div class="storage-label">Depolama Alanı</div>
+          <div class="storage-label">Storage Space</div>
           <div class="storage-bar-bg"><div class="storage-bar-fill" id="storage-fill"></div></div>
           <div class="storage-numbers" id="storage-numbers">2.4 GB / 15 GB</div>
         </div>
@@ -413,7 +413,7 @@
     <div class="file-area" id="file-area-wrap">
       <div class="file-toolbar">
         <div class="breadcrumb" id="breadcrumb">
-          <span class="crumb-active">Drive'ım</span>
+          <span class="crumb-active">My Drive</span>
         </div>
         <div class="toolbar-right">
           <div class="tb-icon-btn active" id="grid-btn" onclick="setLayout('grid')" title="Grid görünüm">
@@ -422,7 +422,7 @@
           <div class="tb-icon-btn" id="list-btn" onclick="setLayout('list')" title="Liste görünüm">
             <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><line x1="1" y1="3" x2="13" y2="3" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><line x1="1" y1="7" x2="13" y2="7" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><line x1="1" y1="11" x2="13" y2="11" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
           </div>
-          <button class="new-folder-btn" onclick="createFolder()"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><line x1="6" y1="2" x2="6" y2="10" stroke="white" stroke-width="1.5" stroke-linecap="round"/><line x1="2" y1="6" x2="10" y2="6" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg>Yükle</button>
+          <button class="new-folder-btn" onclick="createFolder()"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><line x1="6" y1="2" x2="6" y2="10" stroke="white" stroke-width="1.5" stroke-linecap="round"/><line x1="2" y1="6" x2="10" y2="6" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg>Upload</button>
         </div>
       </div>
 
@@ -432,8 +432,8 @@
            ondrop="handleDrop(event)">
         <div class="drop-overlay" id="drop-overlay">
           <svg width="48" height="48" viewBox="0 0 48 48" fill="none"><path d="M24 8C19 8 14.5 11.5 13.5 16.5C10.5 17.5 8 20.5 8 24C8 28.4 11.6 32 16 32H36C39.3 32 42 29.3 42 26S39.3 20 36 20" stroke="#d97706" stroke-width="2" stroke-linecap="round" fill="none"/><path d="M24 28V44M18 38L24 44L30 38" stroke="#d97706" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          <p>Dosyaları buraya bırakın</p>
-          <small>Drive'a otomatik yüklenecek</small>
+          <p>Drop files here</p>
+          <small>Will be automatically uploaded to Drive</small>
         </div>
 
         <div id="files-container"></div>
@@ -443,7 +443,7 @@
       <div class="upload-toast" id="upload-toast">
         <div class="upload-toast-header">
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 2V10M5 5L8 2L11 5" stroke="#d97706" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M2 11V13C2 13.6 2.4 14 3 14H13C13.6 14 14 13.6 14 13V11" stroke="#d97706" stroke-width="1.5" stroke-linecap="round"/></svg>
-          <span id="upload-filename-header">Yükleniyor...</span>
+          <span id="upload-filename-header">Uploading...</span>
         </div>
         <div class="upload-progress-bar"><div class="upload-progress-fill" id="upload-progress"></div></div>
         <div class="upload-filename" id="upload-filename"></div>
@@ -454,10 +454,10 @@
   <!-- STATUS BAR -->
   <div class="statusbar">
     <div class="sb-dot"></div>
-    <div class="sb-text"><b>Bağlı</b> — Google Drive senkronize</div>
-    <div class="sb-text" id="sync-info">Son senkronizasyon: şimdi</div>
+    <div class="sb-text"><b>Connected</b> — Google Drive synced</div>
+    <div class="sb-text" id="sync-info">Last sync: just now</div>
     <div class="sb-spacer"></div>
-    <div class="sb-text" id="file-count-status">0 dosya</div>
+    <div class="sb-text" id="file-count-status">0 files</div>
     <div class="sb-text" id="user-email-status"></div>
   </div>
 </div>
@@ -468,9 +468,9 @@
     <div class="modal-icon">
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#f87171" stroke-width="1.5"/><path d="M12 7V13" stroke="#f87171" stroke-width="1.5" stroke-linecap="round"/><circle cx="12" cy="16" r="1" fill="#f87171"/></svg>
     </div>
-    <h2>Mesai Saati Sona Erdi</h2>
-    <p>Saat 18:00 oldu. Güvenliğiniz için oturumunuz otomatik olarak kapatıldı.<br><br>Yarın sabah 08:00'den itibaren tekrar giriş yapabilirsiniz.</p>
-    <button class="modal-btn" onclick="forceLogout()">Tamam, Kapat</button>
+    <h2>Working Hours Ended</h2>
+    <p>It is 17:45. Your session has been automatically closed for your security.<br><br>You can log in again tomorrow morning from 09:15.</p>
+    <button class="modal-btn" onclick="forceLogout()">OK, Close</button>
   </div>
 </div>
 
@@ -510,8 +510,8 @@ const DISCOVERY_DOC = 'https://www.googleapis.com/discovery/v1/apis/drive/v3/res
 const SCOPES      = 'https://www.googleapis.com/auth/drive.file https://www.googleapis.com/auth/drive.metadata.readonly';
 
 const ALLOWED_EMAIL = 'uguryavuz.data1@gmail.com';   // Sadece bu hesap giriş yapabilir
-const WORK_START    = 8;   // Mesai başlangıcı (saat)
-const WORK_END      = 18;  // Mesai bitişi (saat)
+const WORK_START_H = 9; const WORK_START_M = 15;
+const WORK_END_H = 17; const WORK_END_M = 45;
 // ─────────────────────────────────────────────────────────
 
 const FILES_KEY   = 'pcd_files';
@@ -635,8 +635,11 @@ function formatDate(iso) {
 
 // ─── SESSION ─────────────────────────────────────────────
 function isWorkHour() {
-  const h = new Date().getHours();
-  return h >= WORK_START && h < WORK_END;
+  const now = new Date();
+  const current = now.getHours() * 60 + now.getMinutes();
+  const start = WORK_START_H * 60 + WORK_START_M;
+  const end = WORK_END_H * 60 + WORK_END_M;
+  return current >= start && current < end;
 }
 
 function startSession(user) {
@@ -657,13 +660,13 @@ function startSession(user) {
 function startSessionTimer() {
   function tick() {
     const now = new Date();
-    const endH = WORK_END, endM = 0;
+    const endH = WORK_END_H, endM = WORK_END_M;
     const end = new Date(); end.setHours(endH, endM, 0, 0);
     const diff = end - now;
     if (diff <= 0) { showAutoLogout(); return; }
     const hh = Math.floor(diff / 3600000);
     const mm = Math.floor((diff % 3600000) / 60000);
-    const text = hh > 0 ? `${hh}s ${mm}d kaldı` : `${mm} dk kaldı`;
+    const text = hh > 0 ? `${hh}h ${mm}m left` : `${mm}m left`;
     const el = document.getElementById('session-timer');
     el.textContent = text;
     el.className = 'session-timer' + (hh === 0 && mm <= 30 ? (mm <= 10 ? ' danger' : ' warning') : '');
@@ -744,21 +747,21 @@ function renderFiles(filter = '') {
 
   let html = '';
   if (folders.length) {
-    html += `<div class="file-section-label">Klasörler</div><div class="file-grid ${currentLayout==='list'?'file-list-view':''}">`;
+    html += `<div class="file-section-label">Folders</div><div class="file-grid ${currentLayout==='list'?'file-list-view':''}">`;
     folders.forEach(f => html += fileCard(f, emojis));
     html += '</div>';
   }
   if (docs.length) {
-    html += `<div class="file-section-label">Dosyalar</div><div class="file-grid ${currentLayout==='list'?'file-list-view':''}">`;
+    html += `<div class="file-section-label">Files</div><div class="file-grid ${currentLayout==='list'?'file-list-view':''}">`;
     docs.forEach(f => html += fileCard(f, emojis));
     html += '</div>';
   }
   if (!files.length) {
-    html = `<div style="text-align:center;padding:60px 20px;color:var(--text3)"><div style="font-size:40px;margin-bottom:12px">📂</div><p>Bu klasör boş</p><p style="font-size:12px;margin-top:6px">Dosya yüklemek için sürükleyip bırakın</p></div>`;
+    html = `<div style="text-align:center;padding:60px 20px;color:var(--text3)"><div style="font-size:40px;margin-bottom:12px">📂</div><p>This folder is empty</p><p style="font-size:12px;margin-top:6px">Drag and drop to upload files</p></div>`;
   }
 
   document.getElementById('files-container').innerHTML = html;
-  document.getElementById('file-count-status').textContent = `${files.length} öge`;
+  document.getElementById('file-count-status').textContent = `${files.length} items`;
 }
 
 function fileCard(f, emojis) {
@@ -792,7 +795,7 @@ function openFile(id) {
   recentFiles = [id, ...recentFiles.filter(r => r !== id)].slice(0, 20);
   localStorage.setItem(RECENT_KEY, JSON.stringify(recentFiles));
   updateRecentBadge();
-  document.getElementById('sync-info').textContent = `Son açılan: ${f.name}`;
+  document.getElementById('sync-info').textContent = `Last opened: ${f.name}`;
 }
 
 function updateRecentBadge() {
@@ -937,7 +940,7 @@ document.addEventListener('click', () => document.getElementById('ctx-menu').cla
 function setView(view) {
   currentView = view;
   document.querySelectorAll('.nav-item').forEach((el,i) => el.classList.remove('active'));
-  const labels = { 'my-drive':'Drive\'ım', 'recent':'Son Açılanlar', 'starred':'Yıldızlılar', 'shared':'Paylaşılanlar', 'trash':'Çöp Kutusu' };
+  const labels = { 'my-drive':'My Drive', 'recent':'Recent', 'starred':'Starred', 'shared':'Shared', 'trash':'Trash' };
   document.getElementById('breadcrumb').innerHTML = `<span class="crumb-active">${labels[view]||view}</span>`;
   listDriveFiles();
 }
